@@ -1,4 +1,29 @@
 #include "sort.h"
+/**
+ * swap_dlist - swap two nodes in a doubly linked list
+ * @head: double pointer to the head of the doubly linked list
+ * @c_node: pointer to the current node to be swapped
+ * @n_node: pointer to the next ndoe to be swapped
+ * Return: void
+ */
+
+void swap_dlist(listint_t **head, listint_t *c_node, listint_t *n_node)
+{
+    if (!c_node->prev)  /* if swapping head node */
+	*head = c_node->next;
+
+    else  /* if c_node is not the head node */
+	c_node->prev->next = n_node;
+
+    if (n_node->next)  /* if n_node is not the end node */
+	n_node->next->prev = c_node;
+
+    n_node->prev = c_node->prev;
+    c_node->next = n_node->next;
+    c_node->prev = c_node->prev->next;
+    n_node->next = n_node->next->prev;
+}
+
 
 /**
  * insertion_sort_list - sorts a doubly linked list of integers in ascending
@@ -9,30 +34,26 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	int temp;
-	int counter;
-	int i;
-	listint_t *c_node;
+    listint_t *backward;
+    listint_t *c_node;
 
-	c_node = *list;
-	while (c_node->next) /* check each element in the array */
+    c_node = *list;
+    while (c_node->next) /* if array size >= 2, check each element  */
+    {
+	if (c_node->n > c_node->next->n)  /* compare with next elem */
 	{
-		if (c_node->n > c_node->next->n)  /* compare with the next element */
-		{
-			temp = c_node->n;
-			c_node->n = c_node->next->n;
-			c_node->next->n = temp;
-		}
-		counter =0;
-		while (c_node->prev && c_node->n < c_node->prev->n)  /* after swapping, compare with all the previous elemtns; if out of order, than swap */
-		{
-			temp = c_node->n;
-			c_node->n = c_node->prev->n;
-			c_node->prev->n = temp;
-			c_node = c_node->prev;
-			counter++;
-		}
-		for (i = 0; i <= counter; i++)
-			c_node = c_node->next;
+	    swap_dlist(list, c_node, c_node->next); /* c_node ptr automatically advances to the next */
+	    print_list(*list);
+	    backward = c_node->prev;
+
+	    while (backward->prev && backward->n < backward->prev->n)
+/* compare with all the previous elemtns; if out of order, than swap */
+	    {
+		swap_dlist(list, backward->prev, backward);
+		print_list(*list);
+	    }
 	}
+	else
+	    c_node = c_node->next;
+    }
 }
