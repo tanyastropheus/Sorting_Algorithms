@@ -9,8 +9,15 @@
 
 void swap_dlist(listint_t **head, listint_t *c_node, listint_t *n_node)
 {
+    listint_t *temp;
+
     if (!c_node->prev)  /* if swapping head node */
+    {
 	*head = c_node->next;
+	temp = n_node->prev;
+    }
+
+    else if (!n_node->next)  /* if swapping the end node */
 
     else  /* if c_node is not the head node */
 	c_node->prev->next = n_node;
@@ -19,9 +26,20 @@ void swap_dlist(listint_t **head, listint_t *c_node, listint_t *n_node)
 	n_node->next->prev = c_node;
 
     n_node->prev = c_node->prev;
+    if (!c_node->prev)
+	c_node->prev = c_node->next;
+
     c_node->next = n_node->next;
-    c_node->prev = c_node->prev->next;
-    n_node->next = n_node->next->prev;
+
+    if (!c_node->prev)
+	n_node->next = temp;
+
+    else
+    {
+	c_node->prev = c_node->prev->next;
+	n_node->next = n_node->next->prev;
+    }
+
 }
 
 
