@@ -9,35 +9,32 @@
 
 void swap_dlist(listint_t **head, listint_t *c_node, listint_t *n_node)
 {
-    listint_t *temp;
-
     if (!c_node->prev)  /* if swapping head node */
-    {
-	*head = c_node->next;
-	temp = n_node->prev;
-    }
+	*head = n_node;
+
 
     else if (!n_node->next)  /* if swapping the end node */
+	c_node->prev->next = n_node;
 
-    else  /* if c_node is not the head node */
+    else
 	c_node->prev->next = n_node;
 
     if (n_node->next)  /* if n_node is not the end node */
 	n_node->next->prev = c_node;
 
     n_node->prev = c_node->prev;
-    if (!c_node->prev)
+    if (!c_node->prev || !n_node->next)
 	c_node->prev = c_node->next;
 
     c_node->next = n_node->next;
 
-    if (!c_node->prev)
-	n_node->next = temp;
+    if (!c_node->prev || !n_node->next)
+	n_node->next = c_node;
 
     else
     {
-	c_node->prev = c_node->prev->next;
-	n_node->next = n_node->next->prev;
+	c_node->prev = n_node;
+	n_node->next = c_node;
     }
 
 }
@@ -68,7 +65,9 @@ void insertion_sort_list(listint_t **list)
 /* compare with all the previous elemtns; if out of order, than swap */
 	    {
 		swap_dlist(list, backward->prev, backward);
-		print_list(*list);
+/*		if ((*list)->next->next->next->n == 7)
+		    printf("hello");
+*/		print_list(*list);
 	    }
 	}
 	else
