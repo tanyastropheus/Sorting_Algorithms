@@ -31,7 +31,8 @@ int partition(int **array, size_t size, int start, int end)
 			     p_index++;
 		}
 	}
-	swap(array, array[p_index], array[end]);
+/* swaps pivot to p_index of array */
+	swap(array, array[p_index], pivot);
 	return (p_index);
 }
 
