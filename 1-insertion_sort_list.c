@@ -37,6 +37,9 @@ void insertion_sort_list(listint_t **list)
 	listint_t *backward;
 	listint_t *c_node;
 
+	if (!list || !*list)
+		return;
+
 	c_node = *list;
 	while (c_node->next) /* if array size >= 2 */
 	{
