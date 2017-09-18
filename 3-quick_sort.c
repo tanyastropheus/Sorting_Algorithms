@@ -29,11 +29,13 @@ void swap(int *array, int idx_1, int idx_2)
 
 unsigned int partition_lomuto(int *array, int start_idx, int end_idx)
 {
-	unsigned int i, parti_idx;
+	unsigned int i, parti_idx, pivot;
 
+	pivot = array[end_idx];
+	i = 0;
 	while (i < end_idx)  /* loop through elem in the array excluding pivot */
 	{
-		if (array[i] <= array[end_idx])  /* if elem is less/equal to pivot */
+		if (array[i] <= pivot)  /* if elem is less/equal to pivot */
 		{
 			if (parti_idx != i)  /* swap only when elems are different */
 				swap(array, array[parti_idx], array[i]);
@@ -42,7 +44,7 @@ unsigned int partition_lomuto(int *array, int start_idx, int end_idx)
 		}
 		i++;
 	}
-	swap(array, array[p_idx], array[end_idx]);  /* swap pivot with the divide */
+	swap(array, array[p_idx], pivot);  /* swap pivot with the divide */
 
 	return (parti_idx);
 }
