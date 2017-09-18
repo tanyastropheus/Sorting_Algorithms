@@ -27,6 +27,7 @@ void swap_array(int *array, int idx_1, int idx_2)
  * Return: void
  */
 
+/* Is it possible to optimize unnecessary looping when sorting is done? */
 void selection_sort(int *array, size_t size)
 {
 	int i, j;
@@ -45,7 +46,7 @@ void selection_sort(int *array, size_t size)
 			if (temp > array[j + 1])  /* compare against each subsequent elem */
 			{
 				temp = array[j + 1];
-				idx = j + 1;
+				idx = j + 1;  /* holding index of the smaller elem */
 				flag = 1;
 			}
 			j++;
