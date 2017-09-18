@@ -1,1 +1,1 @@
-This project explores different sorting algorithms.
+0x1A-sorting_algorithms

@@ -23,4 +23,10 @@ void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 
+/*linked list
+void *add_node_beg(listint_t **head, const int n);
+listint_t *insert_dnodeint_at_index(dlistint_t **h, int n);
+int delete_dnodeint_at_index(dlistint_t **head, unsigned int index);
+*/
+
 #endif /* SORT_H */
