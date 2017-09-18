@@ -19,7 +19,9 @@ void swap(int **array, int idx1, int idx2)
  */
 int partition(int **array, size_t size, int start, int end)
 {
-	int pivot = array[size - 1];
+	int p_index,  pivot;
+
+	pivot = array[size - 1];
 	p_index = start;
 /* iterating through array */
 	for (i = start; i < end; i++)
