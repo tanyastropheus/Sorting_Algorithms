@@ -21,12 +21,10 @@ void print_list(const listint_t *list);
 void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
+/* quick sort */
 void quick_sort(int *array, size_t size);
-
-/*linked list
-void *add_node_beg(listint_t **head, const int n);
-listint_t *insert_dnodeint_at_index(dlistint_t **h, int n);
-int delete_dnodeint_at_index(dlistint_t **head, unsigned int index);
-*/
+void swap(int *elem1, int *elem2);
+int partition(int *array, size_t size, int start, int end);
+void quick_sort_rec(int *array, size_t size, int start, int end);
 
 #endif /* SORT_H */

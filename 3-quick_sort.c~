@@ -19,7 +19,9 @@ void swap(int **array, int idx1, int idx2)
  */
 int partition(int **array, size_t size, int start, int end)
 {
-	int pivot = array[size - 1];
+	int p_index,  pivot;
+
+	pivot = array[size - 1];
 	p_index = start;
 /* iterating through array */
 	for (i = start; i < end; i++)
@@ -31,7 +33,8 @@ int partition(int **array, size_t size, int start, int end)
 			     p_index++;
 		}
 	}
-	swap(array, array[p_index], array[end]);
+/* swaps pivot to p_index of array */
+	swap(array, array[p_index], pivot);
 	return (p_index);
 }
 
@@ -50,10 +53,9 @@ void quick_sort_rec(int **array, int start, int end)
 }
 
 /**
- * quick_sort_rec - quick sort recursively
+ * quick_sort - sorts an array using quick sort
  * @array: array to be sorted
- * @start: starting index
- * @end: ending index
+ * @size: size of array
  */
 void quick_sort(int *array, size_t size)
 {
