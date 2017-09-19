@@ -1,8 +1,8 @@
 #include "sort.h"
 /**
- * swap - swaps 2 elements of an array
- * idx1 - index to swap
- * idx2 - 2nd idx to swap
+ * swap - swaps value of 2 integers
+ * elem1 - element 1 to swap
+ * elem2 - element 2 to swap
  */
 void swap(int *elem1, int *elem2)
 {
@@ -15,17 +15,22 @@ void swap(int *elem1, int *elem2)
 
 /**
  * partition - partitions an array
- *
+ * @array: array to be partitioned
+ * @size: size of array
+ * @start: starting point in array
+ * @end: ending point in array
+ * Return: index of pivot
  */
 int partition(int *array, size_t size, int start, int end)
 {
 	int p_index,  pivot, i;
 
-	pivot = array[size - 1];
+	pivot = array[end];
 	p_index = start;
 /* iterating through array */
 	for (i = start; i < end; i++)
 	{
+/* p_index = separation of elements greater/less than pivot */
 /* if element < pivot, swap element with p_index and increment p_index */
 		if (array[i] <= pivot)
 		{
@@ -33,9 +38,10 @@ int partition(int *array, size_t size, int start, int end)
 			     p_index++;
 		}
 	}
-/* p_index = separation of elements greater/less than pivot */
-/* swap pivot to p_index of array */
-	swap(&array[p_index], &array[size-1]);
+
+/* swap pivot to p_index of array -> move & sort value of pivot in list*/
+	swap(&array[p_index], &array[end]);
+	print_array(array, size);
 	return (p_index);
 }
 
@@ -47,6 +53,7 @@ int partition(int *array, size_t size, int start, int end)
  */
 void quick_sort_rec(int *array, size_t size, int start, int end)
 {
+/* pivot index */
 	int p_index;
 
 	if (start <= end)
