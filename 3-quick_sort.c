@@ -1,8 +1,8 @@
 #include "sort.h"
 /**
  * swap - swaps value of 2 integers
- * elem1 - element 1 to swap
- * elem2 - element 2 to swap
+ * @elem1: element 1 to swap
+ * @elem2: element 2 to swap
  */
 void swap(int *elem1, int *elem2)
 {
@@ -32,10 +32,11 @@ int partition(int *array, size_t size, int start, int end)
 	{
 /* p_index = separation of elements greater/less than pivot */
 /* if element < pivot, swap element with p_index and increment p_index */
-		if (array[i] <= pivot)
+		if (array[i] < pivot)
 		{
 			swap(&array[i], &array[p_index]);
-			     p_index++;
+			/* print_array(array, size); */
+			p_index++;
 		}
 	}
 
@@ -48,6 +49,7 @@ int partition(int *array, size_t size, int start, int end)
 /**
  * quick_sort_rec - quick sort recursively
  * @array: array to be sorted
+ * @size: size of the array
  * @start: starting index
  * @end: ending index
  */
