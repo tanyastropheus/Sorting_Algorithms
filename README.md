@@ -18,6 +18,5 @@ All `.c` files were compiled with `gcc 4.8.4` using the flags `-Wall -Werror -We
 
 
 ### Authors
-Tanya Kryukova - [Github](https://github.com/tanyastropheus) / [Twitter](https://twitter.com/tyastropheus).
-Jennifer huang - [Github](www.github.com/jhuang10123) / [Twitter](www.twitter.com/earthtojhuang). 
-
+Tanya Kryukova - [Github](https://github.com/tanyastropheus) / [Twitter](https://twitter.com/tyastropheus).  
+Jennifer huang - [Github](http://www.github.com/jhuang10123) / [Twitter](http://www.twitter.com/earthtojhuang). 
